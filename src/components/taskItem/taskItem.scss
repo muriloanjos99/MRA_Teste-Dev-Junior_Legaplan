@@ -1,0 +1,35 @@
+.task_container {
+  display: grid;
+  grid-template-columns: 0.1fr 0.8fr 0.1fr;
+  grid-template-areas: "checkbox task_name task_delete";
+  align-items: center;
+  justify-content: space-around;
+  width: 26.8vw;
+  height: 7.29vh;
+  border: 1px dashed rgba(215, 221, 233, 1);
+  border-radius: 8px;
+  gap: 16px;
+  padding: 0 16px;
+  
+}
+
+input[type="checkbox"] {
+  grid-area: checkbox;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  width: 24px;
+  height: 24px;
+  border: 1.7px solid rgb(176, 187, 209);
+  transform: translateY(-0.075em);
+  border-radius: 4px;
+}
+
+.task_description {
+  grid-area: task_name;
+  text-align: left;
+}
+
+.task_delete_button {
+  grid-area: task_delete;
+}
