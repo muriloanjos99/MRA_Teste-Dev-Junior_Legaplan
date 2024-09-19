@@ -12,8 +12,8 @@ export default function Home() {
       </header>
       <main className="tasks_container">
         <p className="open_tasks_title">Suas tarefas de hoje</p>
-        <p className="completed_tasks_title">Tarefas finalizadas</p>
         <ul className="open_tasks"></ul>
+        <p className="completed_tasks_title">Tarefas finalizadas</p>
         <ul className="completed_tasks"></ul>
       </main>
       <button className="new_task_button">Adicionar nova tarefa</button>
