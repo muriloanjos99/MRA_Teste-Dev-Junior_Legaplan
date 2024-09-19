@@ -10,6 +10,13 @@ export default function Home() {
         <h2 className="header_title">Bem-vindo de volta, Marcus</h2>
         <p className="header_date">Segunda, 01 de dezembro de 2025</p>
       </header>
+      <main className="tasks_container">
+        <p className="open_tasks_title">Suas tarefas de hoje</p>
+        <p className="completed_tasks_title">Tarefas finalizadas</p>
+        <ul className="open_tasks"></ul>
+        <ul className="completed_tasks"></ul>
+      </main>
+      <button className="new_task_button">Adicionar nova tarefa</button>
     </div>
   );
 }
