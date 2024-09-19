@@ -1,11 +1,11 @@
 .task_container {
   display: grid;
-  grid-template-columns: 0.1fr 0.8fr 0.1fr;
+  grid-template-columns: 24px auto 24px;
   grid-template-areas: "checkbox task_name task_delete";
   align-items: center;
   justify-content: space-around;
-  width: 26.8vw;
-  height: 7.29vh;
+  width: 26.8svw;
+  height: 7.29svh;
   border: 1px dashed rgba(215, 221, 233, 1);
   border-radius: 8px;
   gap: 16px;
@@ -18,23 +18,86 @@
   }
 }
 
-input[type="checkbox"] {
-  grid-area: checkbox;
-  appearance: none;
-  background-color: #fff;
-  margin: 0;
-  width: 24px;
+.checkbox_container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+
+  input {
+    display: none;
+  }
+}
+
+.checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 24px;
-  border: 1.7px solid rgb(176, 187, 209);
-  transform: translateY(-0.075em);
+  width: 24px;
+  background: #ffffff;
+  border: 1px solid #B0BBD1;
   border-radius: 4px;
 }
 
-.task_description {
-  grid-area: task_name;
-  text-align: left;
+.checkbox_container input:checked ~ .checkbox {
+  background: #A0DCF6;
+  border: 1px solid #0796D3;
+}
+
+.checkbox:after {
+  box-sizing: unset;
+  content: '';
+  display: none;
+}
+
+.checkbox_container input:checked ~ .checkbox:after {
+  display: block;
+}
+
+.checkbox_container .checkbox:after {
+  width: 6px;
+  height: 12px;
+  margin-top: -0.2rem;
+  border: solid #0796D3;
+  border-width: 0 1px 1px 0;
+  transform: rotate(45deg);
 }
 
 .task_delete_button {
   grid-area: task_delete;
+  width: 24px;
+  height: 24px;
+}
+
+.task_description {
+  width: 19svw;
+  text-align: left;
+  overflow-y: visible;
+}
+
+.completed_task {
+  color: rgba(0, 0, 0, 0.44);
+  text-decoration-line: line-through;
+}
+
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+  .task_container {
+    width: 65svw;
+    justify-content: space-between;
+    height: 10.14svh;
+    padding: 0 2.5svw;
+  }
+  
+  .task_description {
+    width: 35svw;
+  }
+}
+
+@media (hover: none) {
+  .task_container:hover {
+    border-color: rgba(215, 221, 233, 1);
+    border-style: dashed;
+    background-color: initial;
+  }
 }
