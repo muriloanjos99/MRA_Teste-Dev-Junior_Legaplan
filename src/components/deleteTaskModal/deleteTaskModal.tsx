@@ -54,7 +54,7 @@ export default function DeleteTaskModal({
               <p className="delete_confirmation">Tem certeza que você deseja deletar essa tarefa?</p>
             </div>
             <div className="del_modal_footer">
-              <button type="button" className="cancel_button" onClick={handleModalOpenClose}>
+              <button type="button" className="cancel_button" data-testid="del_cancel_btn" onClick={handleModalOpenClose}>
                 Cancelar
               </button>
               <button type="button" className="delete_button" onClick={handleDeleteTask}>

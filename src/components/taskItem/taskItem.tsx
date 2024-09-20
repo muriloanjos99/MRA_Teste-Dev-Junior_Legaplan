@@ -54,7 +54,7 @@ export default function TaskItem(taskItemProps: TaskItemProps) {
         <div className="checkbox" ></div>
       </label>
       <p className={`task_description ${task.done ? "completed_task" : ""}`}>{task.title}</p>
-      <input type="image" className="task_delete_button" src="trash.svg" onClick={handleDeleteTask} />
+      <input type="image" className="task_delete_button" src="trash.svg" data-testid="delete_icon" onClick={handleDeleteTask} />
     </li>
   );
 }
