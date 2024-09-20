@@ -21,7 +21,7 @@ export default function DeleteTaskModal({
   setSelectedTask
 }: DeleteTaskModalProps) {
   const handleDeleteTask = () => {
-    if (!selectedTask) return;
+    if (!selectedTask) return handleModalOpenClose();
 
     const currentTasks: TasksType = {
       open: [...tasks.open],
