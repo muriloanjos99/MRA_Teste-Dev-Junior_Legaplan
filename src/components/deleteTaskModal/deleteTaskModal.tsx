@@ -3,7 +3,7 @@ import TasksType from "@/types/tasksType";
 import TaskType from "@/types/taskType";
 import "./deleteTaskModal.scss";
 
-type NewTaskModalProps = {
+type DeleteTaskModalProps = {
   isModalOpen: boolean;
   handleModalOpenClose: () => void;
   tasks: TasksType;
@@ -19,7 +19,7 @@ export default function DeleteTaskModal({
   setTasks,
   selectedTask,
   setSelectedTask
-}: NewTaskModalProps) {
+}: DeleteTaskModalProps) {
   const handleDeleteTask = () => {
     if (!selectedTask) return;
 
