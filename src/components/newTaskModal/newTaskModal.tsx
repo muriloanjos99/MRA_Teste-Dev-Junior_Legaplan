@@ -23,7 +23,7 @@ export default function NewTaskModal({
       completed: [...tasks.completed],
     };
 
-    currentTasks.open.push({ title: taskTitle, done: false });
+    currentTasks.open.push({ id: currentTasks.open.length, title: taskTitle, done: false });
     setTasks(currentTasks);
 
     localStorage.setItem("open_tasks", JSON.stringify(currentTasks.open));
