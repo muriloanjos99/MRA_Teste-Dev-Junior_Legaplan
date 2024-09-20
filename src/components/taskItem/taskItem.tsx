@@ -1,22 +1,43 @@
-'use client';
+"use client";
 
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import TaskType from "@/types/taskType";
+import TasksType from "@/types/tasksType";
 import "./taskItem.scss";
 
 type TaskItemProps = {
   task: TaskType;
-  setSelectedTask: Dispatch<SetStateAction<TaskType | null>>;
+  tasks: TasksType;
   openDeleteModal: () => void;
+  setTasks: Dispatch<SetStateAction<TasksType>>;
+  setSelectedTask: Dispatch<SetStateAction<TaskType | null>>;
 };
 
 export default function TaskItem(taskItemProps: TaskItemProps) {
-  const { task, setSelectedTask, openDeleteModal } = taskItemProps;
-
-  const [isChecked, setIsChecked] = useState<boolean>(task.done);
+  const { task, tasks, setTasks, setSelectedTask, openDeleteModal } = taskItemProps;
 
   const handleCheckboxClick = () => {
-    setIsChecked(!isChecked);
+    task.done = !task.done;
+
+    const currentTasks: TasksType = {
+      open: [...tasks.open],
+      completed: [...tasks.completed],
+    };
+
+    if (task.done) {
+      const taskIndex = currentTasks.open.findIndex((t) => t.title === task.title);
+      currentTasks.open.splice(taskIndex, 1);
+      currentTasks.completed.push(task);
+    } else {
+      const taskIndex = currentTasks.completed.findIndex((t) => t.title === task.title);
+      currentTasks.completed.splice(taskIndex, 1);
+      currentTasks.open.push(task);
+    }
+
+    localStorage.setItem("completed_tasks", JSON.stringify(currentTasks.completed));
+    localStorage.setItem("open_tasks", JSON.stringify(currentTasks.open));
+
+    setTasks(currentTasks);
   }
 
   const handleDeleteTask = () => {
@@ -27,10 +48,10 @@ export default function TaskItem(taskItemProps: TaskItemProps) {
   return (
     <li className="task_container" >
       <label className="checkbox_container">
-        <input type="checkbox" checked={isChecked} onChange={handleCheckboxClick} />
+        <input type="checkbox" checked={task.done} onChange={handleCheckboxClick} />
         <div className="checkbox" ></div>
       </label>
-      <p className={`task_description ${isChecked ? "completed_task" : ""}`}>{task.title}</p>
+      <p className={`task_description ${task.done ? "completed_task" : ""}`}>{task.title}</p>
       <input type="image" className="task_delete_button" src="trash.svg" onClick={handleDeleteTask} />
     </li>
   );
