@@ -2,7 +2,6 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import DeleteTaskModal from '../components/deleteTaskModal/deleteTaskModal';
 
 describe('O componente DeleteTaskModal', () => {
-  const tasks = { open: [], completed: [] };
   const setTasks = jest.fn();
   const setSelectedTask = jest.fn();
   const handleModalOpenClose = jest.fn();
