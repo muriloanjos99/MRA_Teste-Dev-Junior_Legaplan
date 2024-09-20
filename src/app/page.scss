@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100svh;
+  height: 100svh;
   width: 100svw;
 }
 
 .header_container {
-  padding-top: 3.48vh;
-  padding-bottom: 3.48vh;
+  padding-top: 3.125vh;
+  padding-bottom: 3.125vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,11 +32,12 @@
   flex-direction: column;
   text-align: center;
   justify-content: space-evenly;
-  margin-top: 3.5vh;
-  height: 58.07vh;
+  align-items: center;
+  margin-top: 5.2vh;
+  height: 58.1vh;
   width: 31.25vw;
   border-radius: 16px;
-  border: 1px solid rgba(234, 236, 240, 1)
+  border: 1px solid rgba(234, 236, 240, 1);
 }
 
 .new_task_button {
@@ -47,31 +48,36 @@
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   background: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
-  padding: 16px, 24px, 16px, 24px;
+  line-height: 2.5vh;
+  letter-spacing: -0.02em;
 }
 
 .open_tasks_title, .completed_tasks_title {
   color: rgba(0, 0, 0, 0.54);
+  width: 31.25vw;
 }
 
 .open_tasks, .completed_tasks {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  width: 26.8vw;
 }
 
 .open_tasks {
   height: 28.125vh;
-  gap: 24px;
+  overflow-y: scroll;
+  gap: 3.125vh;
 }
 
 .completed_tasks {
   height: 7.29vh;
+  overflow-y: scroll;
 }
 
 @media only screen and (min-width : 320px) and (max-width : 480px) {
@@ -108,6 +114,12 @@
   }
 
   .completed_tasks {
+    width: 65vw;
     height: 10.14vh;
+    gap: 8px;
+
+    .task_container {
+      height: 10.14vh;
+    }
   }
 }
