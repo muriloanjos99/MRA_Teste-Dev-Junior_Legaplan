@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap');
+
 $background: #FFFFFF;
 $foreground: #000000;
 
@@ -20,6 +22,7 @@ body {
 }
 
 * {
+  font-family: 'Inter Tight', sans-serif;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
