@@ -7,12 +7,15 @@ import DeleteTaskModal from "@/components/deleteTaskModal/deleteTaskModal";
 import TasksType from "@/types/tasksType";
 import TaskType from "@/types/taskType";
 import "./page.scss";
+import UserModal from "@/components/userModal/userModal";
 
 export default function Home() {
   const [tasks, setTasks] = useState<TasksType>({ open: [], completed: [] });
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isDelModalOpen, setIsDelModalOpen] = useState(false);
+  const [isUserModalOpen, setIsUserModalOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState<TaskType | null>(null);
+  const [user, setUser] = useState<string | null>(null);
 
   useEffect(() => {
     const currentTasks: TasksType = {
@@ -31,8 +34,21 @@ export default function Home() {
       currentTasks.completed.push(...(JSON.parse(storedCompletedTasks) as TaskType[]));
     }
 
+    handleUserModalOpenClose();
+
     setTasks(currentTasks);
   }, []);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('focalpoint_user');
+
+    if (storedUser) {
+      setUser(storedUser);
+    } else {
+      handleUserModalOpenClose();
+    }
+
+  }, [user]);
 
   const handleAddModalOpenClose = () => {
     setIsAddModalOpen(!isAddModalOpen);
@@ -42,13 +58,17 @@ export default function Home() {
     setIsDelModalOpen(!isDelModalOpen);
   };
 
+  const handleUserModalOpenClose = () => {
+    setIsUserModalOpen(!isUserModalOpen);
+  };
+
   return (
     <div className="page_container">
       <header className="header_container">
         <picture>
           <img src="logo.svg" alt="Logo da FocalPoint" />
         </picture>
-        <h2 className="header_title">Bem-vindo de volta, Marcus</h2>
+        <h2 className="header_title">{user ? `Bem-vindo de volta, ${user}` : "Bem-vindo!"}</h2>
         <p className="header_date">Segunda, 01 de dezembro de 2025</p>
       </header>
       <main className="tasks_container">
@@ -68,6 +88,7 @@ export default function Home() {
       <button className="new_task_button" onClick={handleAddModalOpenClose}>Adicionar nova tarefa</button>
       <NewTaskModal isModalOpen={isAddModalOpen} handleModalOpenClose={handleAddModalOpenClose} tasks={tasks} setTasks={setTasks} />
       <DeleteTaskModal isModalOpen={isDelModalOpen} handleModalOpenClose={handleDelModalOpenClose} tasks={tasks} setTasks={setTasks} selectedTask={selectedTask} setSelectedTask={setSelectedTask} />
+      <UserModal isModalOpen={isUserModalOpen} handleUserModalOpenClose={handleUserModalOpenClose} user={user} setUser={setUser} />
     </div>
   );
 }
