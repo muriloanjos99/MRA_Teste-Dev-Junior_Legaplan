@@ -1,0 +1,81 @@
+$content_width: 26.8vw;
+
+.modal_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(1.7px);
+}
+
+.modal {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 24px 48px -12px rgba(16, 24, 40, 0.18);
+  width: 31.25vw;
+  height: 37.24vh;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.modal_title {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29.04px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  width: $content_width;
+}
+
+.modal_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: $content_width;
+  height: 10.18vh;
+}
+
+.task_title_input_label {
+  width: $content_width;
+  line-height: 19.36px;
+  letter-spacing: -0.02em;
+  height: 2.47vh;
+}
+
+.task_title_input {
+  border: 1px solid rgba(215, 221, 233, 1);
+  border-radius: 8px;
+  width: $content_width;
+  height: 6.64vh;
+  padding: 16px;
+}
+
+.modal_footer {
+  display: flex;
+  justify-content: space-between;
+  width: $content_width;
+  height: 6.64vh;
+}
+
+.cancel_button, .add_button {
+  width: 12.85vw;
+  height: 6.64vh;
+  border-radius: 8px;
+  border: none;
+}
+
+.cancel_button {
+  background-color: rgba(231, 238, 251, 1);
+}
+
+.add_button {
+  background: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
+  color: white;
+}
