@@ -27,10 +27,12 @@ export default function TaskItem(taskItemProps: TaskItemProps) {
     if (task.done) {
       const taskIndex = currentTasks.open.findIndex((t) => t.title === task.title);
       currentTasks.open.splice(taskIndex, 1);
+      task.id = currentTasks.completed.length > 0 ? currentTasks.completed[currentTasks.completed.length - 1].id + 1 : 0;
       currentTasks.completed.push(task);
     } else {
       const taskIndex = currentTasks.completed.findIndex((t) => t.title === task.title);
       currentTasks.completed.splice(taskIndex, 1);
+      task.id = currentTasks.open.length > 0 ? currentTasks.open[currentTasks.open.length - 1].id + 1 : 0;
       currentTasks.open.push(task);
     }
 
