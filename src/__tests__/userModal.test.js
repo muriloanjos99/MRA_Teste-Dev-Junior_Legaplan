@@ -1,12 +1,7 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import UserModal from '../components/userModal/userModal';
 
 describe('O componente UserModal', () => {
-  const tasks = { open: [], completed: [] };
-  const setTasks = jest.fn();
-  const setSelectedTask = jest.fn();
-  const handleModalOpenClose = jest.fn();
-
   beforeEach(() => {
     jest.clearAllMocks();
   });
