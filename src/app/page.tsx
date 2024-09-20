@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import TaskItem from "@/components/taskItem/taskItem";
-import NewTaskModal from "@/components/newTaskModal/newTaskModal";
-import DeleteTaskModal from "@/components/deleteTaskModal/deleteTaskModal";
-import TasksType from "@/types/tasksType";
-import TaskType from "@/types/taskType";
+import TaskItem from "../components/taskItem/taskItem";
+import NewTaskModal from "../components/newTaskModal/newTaskModal";
+import DeleteTaskModal from "../components/deleteTaskModal/deleteTaskModal";
+import TasksType from "../types/tasksType";
+import TaskType from "../types/taskType";
 import "./page.scss";
-import UserModal from "@/components/userModal/userModal";
+import UserModal from "../components/userModal/userModal";
 
 export default function Home() {
   const [tasks, setTasks] = useState<TasksType>({ open: [], completed: [] });
