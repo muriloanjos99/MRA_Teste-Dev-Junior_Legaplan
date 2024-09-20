@@ -69,7 +69,16 @@ export default function Home() {
           <img src="logo.svg" alt="Logo da FocalPoint" />
         </picture>
         <h2 className="header_title">{user ? `Bem-vindo de volta, ${user}` : "Bem-vindo!"}</h2>
-        <p className="header_date">Segunda, 01 de dezembro de 2025</p>
+        <p className="header_date">
+          {new Date().toLocaleDateString('pt-BR', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })
+            .replace('-feira', '')
+            .replace(/^\w/, (c) => c.toUpperCase())}
+        </p>
       </header>
       <main className="tasks_container">
         <p className="open_tasks_title">Suas tarefas de hoje</p>
